@@ -12,7 +12,7 @@ exec 3>&1 1>>${LOG} 2>&1
 
 VSEARCH=$(which vsearch)
 SWARM=$(which swarm)
-TMP_FASTA=$(mktemp -t=".")
+TMP_FASTA=$(mktemp --tmpdir=".")
 FINAL_FASTA="3_out/pooled_final.fasta"
 
 # Pool sequences
@@ -30,7 +30,7 @@ echo "Done with global dereplication" 1>&3
 
 # Clustering
 THREADS=4
-TMP_REPRESENTATIVES=$(mktemp -t=".")
+TMP_REPRESENTATIVES=$(mktemp --tmpdir=".")
 "${SWARM}" \
     -d 1 -f -t ${THREADS} -z \
     -i ${FINAL_FASTA/.fasta/_1f.struct} \

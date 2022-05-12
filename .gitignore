@@ -1,3 +1,4 @@
 raw_data/
 *reports/
 *out/
+.DS_Store
